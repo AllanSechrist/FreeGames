@@ -11,7 +11,7 @@ export function GameListProvider({ children }) {
   useEffect(() => {
     const fetchGames = async () => {
       try {
-        const res = await fetch(`${API_URL_BASE}/games`);
+        const res = await fetch(`${API_URL_BASE}/game?id=425`);
         if (!res.ok) throw new Error("Failed to fetch games");
         const data = await res.json();
         setGames(data);
