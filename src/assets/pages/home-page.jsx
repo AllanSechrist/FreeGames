@@ -11,24 +11,37 @@ const HomePage = () => {
     const fetchGames = async () => {
       try {
         const res = await fetch(`${API_URL_BASE}/games`);
-        if(!res.ok) throw new Error("Failed to fetch games");
+        if (!res.ok) throw new Error("Failed to fetch games");
         const data = await res.json();
-        // ----- DEBUG
-        console.log(data)
-        // ----- END DEBUG
         setGames(data);
       } catch (error) {
-        setError(error.message)
+        setError(error.message);
       } finally {
         setLoading(false);
       }
     };
 
     fetchGames();
-  }, [])
+  }, []);
 
-  return <div></div>;
-
+  return (
+    <div>
+      {games.map((game) => (
+        <div className="bg-white rounded-lg shadow p-4 flex flex-col">
+          <img src={game.thumbnail} alt="thumbnail" />
+          <div className="flex justify-between">
+            <h4 className="text-md font-semibold">{game.title}</h4>
+            <h4 className="text-md font-semibold">{game.platform}</h4>
+          </div>
+          <div className="flex justify-between">
+            <h4 className="text-md font-semibold">{game.developer}</h4>
+            <h4 className="text-md font-semibold">{game.release_date}</h4>
+          </div>
+          <p className="text-sm">{game.short_description}</p>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default HomePage;
