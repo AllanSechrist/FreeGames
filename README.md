@@ -32,4 +32,4 @@ Free-to-Play Games API
 
 - [X] Game detail page with more info
 
- Theming (light/dark mode)
+ - [x] Theming (light/dark mode)
