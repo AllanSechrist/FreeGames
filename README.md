@@ -31,5 +31,5 @@ Free-to-Play Games API
  ## ✅ TODO / Roadmap
 
 - [X] Game detail page with more info
-
- - [x] Theming (light/dark mode)
+- [ ] Save Games in a 'to play' list in localStorage
+ - [] Theming (light/dark mode)
