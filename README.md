@@ -1,8 +1,8 @@
-##🎮 Free Game Site
+#🎮 Free Game Site
 
 A simple web app built with React, Vite, and TailwindCSS that lets users explore and filter free-to-play games.
 
-#🚀 Features
+##🚀 Features
 
 Browse a list of games fetched from an external API
 
@@ -14,7 +14,7 @@ Responsive design styled with TailwindCSS
 
 Lightweight and fast build using Vite
 
-#🛠️ Tech Stack
+##🛠️ Tech Stack
 
 React
  – component-based UI
