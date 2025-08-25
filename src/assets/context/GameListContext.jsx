@@ -7,26 +7,27 @@ export function GameListProvider({ children }) {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const fetchGames = async (formData) => {
+    console.log(`${API_URL_BASE}/filter?tag=${formData}`)
+    setError(null)
+    try {
+      const res = await fetch(`${API_URL_BASE}/filter?tag=${formData}`);
+      if (!res.ok) throw new Error("Failed to fetch games");
+      const data = await res.json();
+      setGames(data);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  useEffect(() => {
-    const fetchGames = async () => {
-      try {
-        const res = await fetch(`${API_URL_BASE}/game?id=425`);
-        if (!res.ok) throw new Error("Failed to fetch games");
-        const data = await res.json();
-        setGames(data);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchGames();
-  }, []);
+  // useEffect(() => {
+  //   fetchGames();
+  // }, []);
 
   return (
-    <GameListContext.Provider value={{games, loading, error}}>{children}</GameListContext.Provider>
+    <GameListContext.Provider value={{games, loading, error, fetchGames}}>{children}</GameListContext.Provider>
   );
 }
 
