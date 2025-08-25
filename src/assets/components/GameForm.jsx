@@ -2,9 +2,22 @@ import { useState } from "react";
 import { useGameList } from "../context/GameListContext";
 const GameForm = () => {
   const [formData, setFormData] = useState([]);
-  const {fetchGames} = useGameList();
+  const { fetchGames } = useGameList();
 
-  const options = ["MMORPG", "Shooter", "MOBA", "Anime", "Battle Royale", "Strategy", "Fantasy", "Sci-Fi", "Racing", "Fighting", "Social", "Sports"];
+  const options = [
+    "MMORPG",
+    "Shooter",
+    "MOBA",
+    "Anime",
+    "Battle Royale",
+    "Strategy",
+    "Fantasy",
+    "Sci-Fi",
+    "Racing",
+    "Fighting",
+    "Social",
+    "Sports",
+  ];
   const handleChange = (e) => {
     const value = e.target.value;
     const checked = e.target.checked;
@@ -14,17 +27,17 @@ const GameForm = () => {
       : setFormData(formData.filter((option) => option !== value));
   };
 
-
   const formatFormData = () => {
-    const formattedData = formData.map((option) => (option.toLowerCase()))
+    const formattedData = formData.map((option) => option.toLowerCase());
+    return formattedData.join(".").replace(/\s+/g, "");
+  };
 
-    return formattedData.join(".").replace(/\s+/g, "")
-  }
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.length === 0) return
+    if (formData.length === 0) return;
     fetchGames(formatFormData());
   };
+
   return (
     <>
       <form

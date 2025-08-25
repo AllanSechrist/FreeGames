@@ -1,12 +1,13 @@
-import { createContext, useState, useEffect, useContext } from "react";
+import { createContext, useState, useContext } from "react";
 const API_URL_BASE = import.meta.env.VITE_API_URL_BASE;
 
 const GameListContext = createContext();
 
 export function GameListProvider({ children }) {
-  const [games, setGames] = useState([]);
+  // const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [randomGame, setRandomGame] = useState(null);
   const fetchGames = async (formData) => {
     console.log(`${API_URL_BASE}/filter?tag=${formData}`)
     setError(null)
@@ -14,7 +15,7 @@ export function GameListProvider({ children }) {
       const res = await fetch(`${API_URL_BASE}/filter?tag=${formData}`);
       if (!res.ok) throw new Error("Failed to fetch games");
       const data = await res.json();
-      setGames(data);
+      chooseRandomGame(data)
     } catch (error) {
       setError(error.message);
     } finally {
@@ -22,12 +23,18 @@ export function GameListProvider({ children }) {
     }
   };
 
+  const chooseRandomGame = (games) => {
+    console.log(games.length);
+    setRandomGame(games[Math.floor(Math.random() * games.length)]);
+    console.log(randomGame);
+  }
+
   // useEffect(() => {
   //   fetchGames();
   // }, []);
 
   return (
-    <GameListContext.Provider value={{games, loading, error, fetchGames}}>{children}</GameListContext.Provider>
+    <GameListContext.Provider value={{randomGame, loading, error, fetchGames}}>{children}</GameListContext.Provider>
   );
 }
 

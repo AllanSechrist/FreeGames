@@ -1,13 +1,18 @@
 import GameList from "../components/GameList";
 import GameForm from "../components/GameForm";
+import GameCard from "../components/GameCard";
+import { useGameList } from "../context/GameListContext";
+import { GiH2O } from "react-icons/gi";
 
 
 
 const HomePage = () => {
+  const {randomGame} = useGameList();
   return (
-    <>
+    <div className="grid place-items-center min-h-screen bg-gray-100">
+      {randomGame ? <GameCard game={randomGame} /> : <h2 className="text-lg font-semibold mb-2 text-center">Fill out the checkboxes and I'll help you find a new game to play!</h2>}
       <GameForm />
-    </>
+    </div>
   );
 };
 
