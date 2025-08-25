@@ -25,7 +25,7 @@ Vite
 TailwindCSS
  – utility-first CSS framework
 
-Free-to-Play Games API
+[Free-to-Play Games API](https://www.freetogame.com/api-doc)
  – data source
 
  ## ✅ TODO / Roadmap
