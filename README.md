@@ -1,12 +1,29 @@
-# React + Vite
+##🎮 Free Game Site
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple web app built with React, Vite, and TailwindCSS that lets users explore and filter free-to-play games.
 
-Currently, two official plugins are available:
+#🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Browse a list of games fetched from an external API
 
-## Expanding the ESLint configuration
+Display game details in clean card components (title, developer, release date, description, etc.)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Filter games by categories (MMORPG, MOBA, Shooter, etc.) using checkboxes
+
+Responsive design styled with TailwindCSS
+
+Lightweight and fast build using Vite
+
+#🛠️ Tech Stack
+
+React
+ – component-based UI
+
+Vite
+ – blazing-fast dev server & bundler
+
+TailwindCSS
+ – utility-first CSS framework
+
+Free-to-Play Games API
+ – data source
