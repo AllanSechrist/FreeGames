@@ -30,6 +30,6 @@ Free-to-Play Games API
 
  ## ✅ TODO / Roadmap
 
-[x] Game detail page with more info
+- [X] Game detail page with more info
 
  Theming (light/dark mode)
