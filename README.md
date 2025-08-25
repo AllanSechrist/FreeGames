@@ -32,4 +32,4 @@ Free-to-Play Games API
 
 - [X] Game detail page with more info
 - [ ] Save Games in a 'to play' list in localStorage
- - [] Theming (light/dark mode)
+- [ ] Theming (light/dark mode)
