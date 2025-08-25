@@ -16,13 +16,13 @@ Lightweight and fast build using Vite
 
 ## 🛠️ Tech Stack
 
-React
+[React](https://react.dev/)
  – component-based UI
 
-Vite
+[Vite](https://vitejs.dev/)
  – blazing-fast dev server & bundler
 
-TailwindCSS
+[TailwindCSS](https://tailwindcss.com/)
  – utility-first CSS framework
 
 [Free-to-Play Games API](https://www.freetogame.com/api-doc)
