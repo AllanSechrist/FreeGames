@@ -27,3 +27,9 @@ TailwindCSS
 
 Free-to-Play Games API
  – data source
+
+ ## ✅ TODO / Roadmap
+
+[x] Game detail page with more info
+
+ Theming (light/dark mode)
