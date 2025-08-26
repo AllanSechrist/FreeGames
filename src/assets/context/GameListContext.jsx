@@ -35,12 +35,8 @@ export function GameListProvider({ children }) {
     console.log(randomGame);
   }
 
-  // useEffect(() => {
-  //   fetchGames();
-  // }, []);
-
   return (
-    <GameListContext.Provider value={{randomGame, loading, error, fetchGames, setSavedGames}}>{children}</GameListContext.Provider>
+    <GameListContext.Provider value={{randomGame, loading, error, savedGames, fetchGames, setSavedGames}}>{children}</GameListContext.Provider>
   );
 }
 

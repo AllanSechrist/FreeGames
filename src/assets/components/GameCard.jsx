@@ -1,7 +1,7 @@
 import { useGameList } from "../context/GameListContext";
 
 const GameCard = ({ game }) => {
-  const {setSavedGame} = useGameList();
+  const {setSavedGames, savedGames} = useGameList();
   return (
     <div className="bg-white rounded-lg shadow p-4 flex flex-col mb-4">
       <img src={game.thumbnail} alt="thumbnail" />
@@ -16,7 +16,13 @@ const GameCard = ({ game }) => {
       <p className="text-sm">{game.short_description}</p>
       <div className="flex justify-between">
         <a href={`${game.game_url}`} target="_blank" className="text-blue-600 hover:text-blue-800 no-underline">Game Site</a>
-        <button onClick={() => setSavedGame(game)} className="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded-lg shadow">Save</button>
+        <button
+          onClick={() => setSavedGames([...savedGames, game])}
+          disabled={savedGames.some(saved => saved.id === game.id)}
+          className={`bg-gray-500 hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded-lg shadow ${savedGames.some(saved => saved.id === game.id) && 'opacity-50 cursor-not-allowed'}`}
+        >
+          {savedGames.some(saved => saved.id === game.id) ? "Saved!" : "Save"}
+        </button>
       </div>
     </div>
   );
