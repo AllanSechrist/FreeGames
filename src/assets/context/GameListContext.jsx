@@ -1,13 +1,19 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 const API_URL_BASE = import.meta.env.VITE_API_URL_BASE;
 
 const GameListContext = createContext();
 
 export function GameListProvider({ children }) {
-  // const [games, setGames] = useState([]);
+  const [savedGames, setSavedGames] = useState(() => {
+    const savedGames = JSON.parse(localStorage.getItem('savedGames'));
+    return savedGames || [];
+  })
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [randomGame, setRandomGame] = useState(null);
+
+  useEffect(() => localStorage.setItem('savedGames', JSON.stringify(savedGames)), [savedGames])
+
   const fetchGames = async (formData) => {
     console.log(`${API_URL_BASE}/filter?tag=${formData}`)
     setError(null)
@@ -34,7 +40,7 @@ export function GameListProvider({ children }) {
   // }, []);
 
   return (
-    <GameListContext.Provider value={{randomGame, loading, error, fetchGames}}>{children}</GameListContext.Provider>
+    <GameListContext.Provider value={{randomGame, loading, error, fetchGames, setSavedGames}}>{children}</GameListContext.Provider>
   );
 }
 

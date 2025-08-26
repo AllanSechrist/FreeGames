@@ -2,7 +2,6 @@ import GameList from "../components/GameList";
 import GameForm from "../components/GameForm";
 import GameCard from "../components/GameCard";
 import { useGameList } from "../context/GameListContext";
-import { GiH2O } from "react-icons/gi";
 
 
 

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useGameList } from "../context/GameListContext";
+import GameList from "./GameList";
 const GameForm = () => {
   const [formData, setFormData] = useState([]);
-  const { fetchGames } = useGameList();
+  const { fetchGames, randomGame } = useGameList();
+  const buttonText = randomGame ? "Reroll!" : "Find a Game";
 
   const options = [
     "MMORPG",
@@ -61,7 +63,7 @@ const GameForm = () => {
         </div>
         <div className="flex flex-col">
           <button className="bg-blue-600 text-white mt-3 px-4 py-2 rounded transition hover:bg-blue-700">
-            Find My Game!
+            {buttonText}
           </button>
         </div>
       </form>
