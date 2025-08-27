@@ -28,7 +28,7 @@ Lightweight and fast build using Vite
 [Free-to-Play Games API](https://www.freetogame.com/api-doc)
  – data source
 
- [Dasiy Ui](https://daisyui.com)
+ [Daisy Ui](https://daisyui.com)
  – DaisyUI is a collection of CSS class names. These class names are a high-level abstraction of Tailwind CSS utility classes.
 
  ## ✅ TODO / Roadmap
