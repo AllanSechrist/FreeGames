@@ -29,7 +29,7 @@ Lightweight and fast build using Vite
  – data source
 
  [Dasiy Ui](https://daisyui.com).
-- DaisyUI is a collection of CSS class names. These class names are a high-level abstraction of Tailwind CSS utility classes.
+ - DaisyUI is a collection of CSS class names. These class names are a high-level abstraction of Tailwind CSS utility classes.
 
  ## ✅ TODO / Roadmap
 
