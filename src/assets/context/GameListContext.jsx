@@ -11,7 +11,6 @@ export function GameListProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [randomGame, setRandomGame] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => localStorage.setItem('savedGames', JSON.stringify(savedGames)), [savedGames])
 
@@ -37,7 +36,7 @@ export function GameListProvider({ children }) {
   }
 
   return (
-    <GameListContext.Provider value={{randomGame, loading, error, savedGames, isOpen, setIsOpen, fetchGames, setSavedGames}}>{children}</GameListContext.Provider>
+    <GameListContext.Provider value={{randomGame, loading, error, savedGames, fetchGames, setSavedGames}}>{children}</GameListContext.Provider>
   );
 }
 
