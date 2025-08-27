@@ -18,8 +18,10 @@ const GameCard = ({ game }) => {
           <p>{game.release_date}</p>
           <p className="text-right">{game.genre}</p>
         </div>
-        <div className="card-actions justify-end">
-          {isGameListPage ? <DeleteButton /> : <SaveButton game={game} />}
+        <p>{game.short_description}</p>
+        <div className="card-actions justify-between items-center">
+          <a href={game.game_url} className="link link-info link-hover" target="_blank">Website</a>
+          {isGameListPage ? <DeleteButton id={game.id} /> : <SaveButton game={game} />}
         </div>
       </div>
     </div>
