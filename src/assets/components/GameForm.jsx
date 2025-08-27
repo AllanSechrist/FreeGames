@@ -44,25 +44,25 @@ const GameForm = () => {
     <>
       <form
         onSubmit={handleSubmit}
-        className="p-4 bg-white rounded-lg shadow-md"
+        className="p-4 bg-base-100 rounded-lg shadow-md mt-4"
       >
         <h3 className="text-lg font-semibold mb-2">Choose Categories</h3>
         <div className="grid grid-cols-2 gap-1">
           {options.map((option) => (
-            <label key={option} className="inline-flex items-center space-x-2">
+            <label key={option} className="label">
               <input
                 type="checkbox"
                 value={option}
                 checked={formData.includes(option)}
                 onChange={handleChange}
-                className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                className="checkbox checkbox-success"
               />
               <span>{option}</span>
             </label>
           ))}
         </div>
         <div className="flex flex-col">
-          <button className="bg-blue-600 text-white mt-3 px-4 py-2 rounded transition hover:bg-blue-700">
+          <button className="btn btn-success mt-4">
             {buttonText}
           </button>
         </div>
