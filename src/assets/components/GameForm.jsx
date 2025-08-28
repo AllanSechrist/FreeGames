@@ -47,7 +47,7 @@ const GameForm = () => {
         className="p-4 bg-base-100 rounded-lg shadow-md mt-4"
       >
         <h3 className="text-lg font-semibold mb-2">Choose Categories</h3>
-        <div className="grid grid-cols-2 gap-1">
+        <div className="grid grid-cols-6 gap-1">
           {options.map((option) => (
             <label key={option} className="label">
               <input
@@ -61,7 +61,7 @@ const GameForm = () => {
             </label>
           ))}
         </div>
-        <div className="flex flex-col">
+        <div className="flex justify-center">
           <button className="btn btn-success mt-4">
             {buttonText}
           </button>
