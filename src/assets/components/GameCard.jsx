@@ -14,8 +14,6 @@ const GameCard = ({ game }) => {
         <h2 className="card-title">{game.title}</h2>
         <div className="grid grid-cols-2 gap-x-4 gap-y-1 items-baseline text-sm">
           <p>{game.platform}</p>
-          <p className="text-right">{game.developer}</p>
-          <p>{game.release_date}</p>
           <p className="text-right">{game.genre}</p>
         </div>
         <p>{game.short_description}</p>
