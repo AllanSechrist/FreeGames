@@ -4,7 +4,7 @@ A simple web app built with React, Vite, and TailwindCSS that lets users explore
 
 ## 🚀 Features
 
-Browse a list of games fetched from an external API
+Get a random game fetched from an external API
 
 Display game details in clean card components (title, developer, release date, description, etc.)
 
@@ -34,5 +34,5 @@ Lightweight and fast build using Vite
  ## ✅ TODO / Roadmap
 
 - [X] Game detail page with more info
-- [ ] Save Games in a 'to play' list in localStorage
+- [X] Save Games in a 'to play' list in localStorage
 - [ ] Theming (light/dark mode)
