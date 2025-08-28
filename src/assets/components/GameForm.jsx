@@ -44,7 +44,7 @@ const GameForm = () => {
     <>
       <form
         onSubmit={handleSubmit}
-        className="p-4 bg-base-100 rounded-lg shadow-md mt-4"
+        className="p-4 bg-base-100 rounded-lg shadow-md"
       >
         <h3 className="text-lg font-semibold mb-2">Choose Categories</h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1">
