@@ -4,14 +4,12 @@ import GameCard from "../components/GameCard";
 import Carousel from "../components/Carousel";
 import { useGameList } from "../context/GameListContext";
 
-
-
-
 const HomePage = () => {
-  const {} = useGameList();
+  const { randomGame } = useGameList();
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-base-300 space-y-4">
-      {/* <Carousel /> */}
+      {randomGame ? <Carousel /> : ""}
+
       <GameForm />
     </div>
   );

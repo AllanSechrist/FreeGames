@@ -6,7 +6,7 @@ const SaveButton = ({ game }) => {
     <button
       onClick={() => setSavedGames([...savedGames, game])}
       disabled={savedGames.some((saved) => saved.id === game.id)}
-      className={`btn btn-outline ${
+      className={`btn btn-outline btn-success ${
         savedGames.some((saved) => saved.id === game.id) &&
         "opacity-50 cursor-not-allowed"
       }`}
