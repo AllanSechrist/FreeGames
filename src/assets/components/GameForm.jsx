@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useGameList } from "../context/GameListContext";
 import GameList from "./GameList";
 const GameForm = () => {
   const [formData, setFormData] = useState([]);
-  const { fetchGames, randomGame } = useGameList();
+  const prevFormData = useRef([]);
+  const { fetchGames, randomGame, filteredGames, chooseRandomGame } =
+    useGameList();
   const buttonText = randomGame ? "Reroll!" : "Find a Game";
 
   const options = [
@@ -20,9 +22,19 @@ const GameForm = () => {
     "Social",
     "Sports",
   ];
-  const handleChange = (e) => {
-    const value = e.target.value;
-    const checked = e.target.checked;
+
+  // Check if from data has changed for resubmission
+  useEffect(() => {
+    if (prevFormData.current !== formData) {
+      console.log("Form data Changed");
+      console.log("Previous: ", prevFormData.current);
+      console.log("Current: ", formData);
+    }
+  }, [formData]);
+
+  const handleChange = (event) => {
+    const value = event.target.value;
+    const checked = event.target.checked;
 
     checked
       ? setFormData([...formData, value])
@@ -34,10 +46,27 @@ const GameForm = () => {
     return formattedData.join(".").replace(/\s+/g, "");
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     if (formData.length === 0) return;
-    fetchGames(formatFormData());
+
+    const shouldRefetch =
+      prevFormData.current !== formData || filteredGames.length === 0;
+
+    if (shouldRefetch) {
+      prevFormData.current = formData;
+      // get new games based on new form data
+      const games = await fetchGames(formatFormData());
+      if (games.length > 0) {
+        prevFormData.current = formData;
+        chooseRandomGame(games);
+      } else {
+        console.log("No Games") // DEBUG
+      }
+    } else {
+      // Choose from the list of games already fetched.
+      filteredGames.length > 0 ? chooseRandomGame(filteredGames) : console.log("No Games");
+    }
   };
 
   return (
@@ -62,9 +91,7 @@ const GameForm = () => {
           ))}
         </div>
         <div className="flex justify-center">
-          <button className="btn btn-success mt-4">
-            {buttonText}
-          </button>
+          <button className="btn btn-success mt-4">{buttonText}</button>
         </div>
       </form>
     </>

@@ -1,7 +1,7 @@
 import GameCard from "./GameCard";
 
 const GameList = ({games, emptyListMessage}) => {
-  const gridClass = "grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-y-8 place-items-center"
+  const gridClass = "grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center"
   const messageClass = "flex items-center justify-center text-4xl font-semibold"
   return (
     <>

@@ -10,6 +10,7 @@ export function GameListProvider({ children }) {
   })
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [filteredGames, setFilteredGames] = useState([]);
   const [randomGame, setRandomGame] = useState(null);
 
   useEffect(() => localStorage.setItem('savedGames', JSON.stringify(savedGames)), [savedGames])
@@ -21,7 +22,8 @@ export function GameListProvider({ children }) {
       const res = await fetch(`${API_URL_BASE}/filter?tag=${formData}`);
       if (!res.ok) throw new Error("Failed to fetch games");
       const data = await res.json();
-      chooseRandomGame(data)
+      setFilteredGames(data);
+      return data;
     } catch (error) {
       setError(error.message);
     } finally {
@@ -30,13 +32,11 @@ export function GameListProvider({ children }) {
   };
 
   const chooseRandomGame = (games) => {
-    console.log(games.length);
     setRandomGame(games[Math.floor(Math.random() * games.length)]);
-    console.log(randomGame);
   }
 
   return (
-    <GameListContext.Provider value={{randomGame, loading, error, savedGames, fetchGames, setSavedGames}}>{children}</GameListContext.Provider>
+    <GameListContext.Provider value={{randomGame, loading, error, savedGames, filteredGames, fetchGames, setSavedGames, chooseRandomGame}}>{children}</GameListContext.Provider>
   );
 }
 
