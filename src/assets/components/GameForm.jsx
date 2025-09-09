@@ -4,9 +4,9 @@ import GameList from "./GameList";
 const GameForm = () => {
   const [formData, setFormData] = useState([]);
   const prevFormData = useRef([]);
-  const { fetchGames, randomGame, filteredGames, chooseRandomGame } =
+  const { fetchGames, randomGames, filteredGames, chooseRandomGames } =
     useGameList();
-  const buttonText = randomGame ? "Reroll!" : "Find a Game";
+  const buttonText = randomGames.length ? "Reroll!" : "Find a Game";
 
   const options = [
     "MMORPG",
@@ -31,6 +31,8 @@ const GameForm = () => {
       console.log("Current: ", formData);
     }
   }, [formData]);
+
+
 
   const handleChange = (event) => {
     const value = event.target.value;
@@ -59,13 +61,13 @@ const GameForm = () => {
       const games = await fetchGames(formatFormData());
       if (games.length > 0) {
         prevFormData.current = formData;
-        chooseRandomGame(games);
+        chooseRandomGames(games);
       } else {
         console.log("No Games") // DEBUG
       }
     } else {
       // Choose from the list of games already fetched.
-      filteredGames.length > 0 ? chooseRandomGame(filteredGames) : console.log("No Games");
+      filteredGames.length > 0 ? chooseRandomGames(filteredGames) : console.log("No Games");
     }
   };
 
