@@ -14,7 +14,6 @@ export function GameListProvider({ children }) {
   const [randomGames, setRandomGames] = useState([]);
 
   useEffect(() => localStorage.setItem('savedGames', JSON.stringify(savedGames)), [savedGames])
-   {/* useEffect to rerender page with randomGames Change */}
 
   const fetchGames = async (formData) => {
     console.log(`${API_URL_BASE}/filter?tag=${formData}`)
@@ -46,10 +45,19 @@ export function GameListProvider({ children }) {
     return gamesCopy
   }
 
+  const removeDuplicates = (games) => {
+    // removes games already saved in savedGames
+    // to not display them again when the user rolls for new games.
+    const savedGamesIds = new Set(savedGames.map(game => game.id)) // get game id's for comparison
+    const uniqueGames = games.filter(game => !savedGamesIds.has(game.id))
+    return uniqueGames
+  }
+
   const chooseRandomGames = (games, numberOfRandomGames = 3) => {
     // takes a list of games and randomly chooses and returns a list of length numberOfRandomGames
     // or games, whichever is shorter.
-    const randomGamesList = shuffleGames(games).slice(0, Math.min(numberOfRandomGames, games.length));
+    const uniqueGames = removeDuplicates(games)
+    const randomGamesList = shuffleGames(uniqueGames).slice(0, Math.min(numberOfRandomGames, uniqueGames.length));
     setRandomGames(randomGamesList);
   }
 
