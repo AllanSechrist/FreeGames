@@ -6,17 +6,17 @@ const GameCard = ({ game }) => {
   const {pathname} = useLocation();
   const isGameListPage = pathname === '/gamelist';
   return (
-    <div className="card bg-base-100 w-90 shadow-sm">
+    <div className="card bg-base-100 w-90 h-116 shadow-sm">
       <figure>
         <img src={game.thumbnail} alt={game.title} />
       </figure>
-      <div className="card-body">
+      <div className="card-body h-50">
         <h2 className="card-title">{game.title}</h2>
         <div className="grid grid-cols-2 gap-x-4 gap-y-1 items-baseline text-sm">
           <p>{game.platform}</p>
           <p className="text-right">{game.genre}</p>
         </div>
-        <p>{game.short_description}</p>
+        <p className="line-clamp-6">{game.short_description}</p>
         <div className="card-actions justify-between items-center">
           <a href={game.game_url} className="link link-info link-hover" target="_blank">Website</a>
           {isGameListPage ? <DeleteButton id={game.id} /> : <SaveButton game={game} />}
