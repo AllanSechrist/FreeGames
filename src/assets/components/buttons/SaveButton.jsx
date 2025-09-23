@@ -12,7 +12,7 @@ const SaveButton = ({ game }) => {
       {savedGames.some((saved) => saved.id === game.id) ? (
         <PiHeartFill className="text-3xl text-pink-400"/>
       ) : (
-        <PiHeartThin className="text-3xl text-pink-400" />
+        <PiHeartThin className="text-3xl text-pink-400 transition-transform duration-200 hover:scale-125" />
       )}
     </button>
   );

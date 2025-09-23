@@ -15,7 +15,7 @@ const DeleteButton = ({ id }) => {
   };
 
   return <button onClick={deleteGame}>
-    <PiTrashThin className="text-3xl"/>
+    <PiTrashThin className="text-3xl transition-transform duration-200 hover:scale-125"/>
   </button>;
 };
 
