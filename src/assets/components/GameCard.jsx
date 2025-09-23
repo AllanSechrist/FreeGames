@@ -1,10 +1,9 @@
-import { useLocation } from "react-router";
+import DeleteButton from './buttons/DeleteButton';
 import SaveButton from "./buttons/SaveButton";
-import DeleteButton from "./buttons/DeleteButton";
 
-const GameCard = ({ game }) => {
-  const {pathname} = useLocation();
-  const isGameListPage = pathname === '/gamelist';
+
+const GameCard = ({ game, button="save" }) => {
+
   return (
     <div className="card bg-base-100 w-90 h-116 shadow-sm">
       <figure>
@@ -19,7 +18,7 @@ const GameCard = ({ game }) => {
         <p className="line-clamp-6">{game.short_description}</p>
         <div className="card-actions justify-between items-center">
           <a href={game.game_url} className="link link-info link-hover" target="_blank">Website</a>
-          {isGameListPage ? <DeleteButton id={game.id} /> : <SaveButton game={game} />}
+          {button === 'save' ? <SaveButton game={game} /> : <DeleteButton id={game.id} /> }
         </div>
       </div>
     </div>

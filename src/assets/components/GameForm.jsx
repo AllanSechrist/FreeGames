@@ -6,7 +6,7 @@ const GameForm = () => {
   const prevFormData = useRef([]);
   const { fetchGames, randomGames, filteredGames, chooseRandomGames } =
     useGameList();
-  const buttonText = randomGames.length ? "Reroll!" : "Find a Game";
+  const buttonText = randomGames.length ? "Reroll!" : "Find Games";
 
   const options = [
     "MMORPG",
