@@ -1,11 +1,12 @@
 import { useGameList } from "../../context/GameListContext";
+import { PiTrashThin } from "react-icons/pi";
 
 const DeleteButton = ({ id }) => {
   const { savedGames, setSavedGames } = useGameList();
 
   const deleteGame = () => {
     const confirmDelete = window.confirm(
-      "Are you sure you want to delete this game?"
+      "Are you sure you want to remove this game?"
     );
 
     if (confirmDelete) {
@@ -13,7 +14,9 @@ const DeleteButton = ({ id }) => {
     }
   };
 
-  return <button onClick={deleteGame} className="btn btn-error">Delete</button>;
+  return <button onClick={deleteGame}>
+    <PiTrashThin className="text-3xl transition-transform duration-200 hover:scale-125"/>
+  </button>;
 };
 
 export default DeleteButton;
